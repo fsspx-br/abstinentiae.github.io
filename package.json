@@ -1,0 +1,16 @@
+{
+  "name": "abstinentiae",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Rafael Machado",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "type": "module",
+  "dependencies": {}
+}

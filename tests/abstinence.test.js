@@ -1,4 +1,4 @@
-const {isAbstinence} = require('../abstinence.cjs');
+const {isAbstinence} = require('../src/abstinence.cjs');
 
 describe('is abstinence', () => {
     test('friday in feast day', () => {

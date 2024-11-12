@@ -1,4 +1,4 @@
-const { easter, goodFriday } = require('../easter');
+const { easter, goodFriday } = require('../src/easter');
 
 describe('easter date calculator', () => {
     test('calculates Good Friday', () => {

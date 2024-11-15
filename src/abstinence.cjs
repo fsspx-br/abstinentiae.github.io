@@ -1,20 +1,20 @@
-const { goodFriday } = require('./easter.cjs');
+const easterCalendar = require('./easter.cjs');
 const { feastDates } = require('./feast_dates.cjs');
 
 
 function isAbstinence(date) {
     const year = date.getFullYear();
-    const goodFridayDay = goodFriday(year);
-
-    if (isFriday(date)) {
-        return false;
-    }
+    const goodFridayDay = easterCalendar.goodFriday(year);
 
     if (isDateEqual(date, goodFridayDay)) {
         return true;
     }
 
-    return isFeast(date);
+    if (isFeast(date) && isFriday(date)) {
+        return false;
+    }
+
+    return isFriday(date);
 }
 
 function isDateEqual(x, y) {

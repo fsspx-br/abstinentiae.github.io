@@ -5,6 +5,12 @@ const { feastDates } = require('./feast_dates.cjs');
 function isAbstinence(date) {
     const year = date.getFullYear();
     const goodFridayDay = easterCalendar.goodFriday(year);
+    const ashesDay = easterCalendar.ashesDay(year);
+
+    if (isDateEqual(date, ashesDay)) {
+        console.log('ashes day');
+        return true;
+    }
 
     if (isDateEqual(date, goodFridayDay)) {
         return true;

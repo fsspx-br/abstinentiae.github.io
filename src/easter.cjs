@@ -26,7 +26,17 @@ function goodFriday(year) {
     );
 }
 
+function ashesDay(year) {
+    const easterDate = easter(year);
+    return new Date(
+        easterDate.getFullYear(), 
+        easterDate.getMonth(), 
+        easterDate.getDate() - 46
+    );
+}
+
 module.exports = {
     easter,
-    goodFriday
+    goodFriday,
+    ashesDay
 }

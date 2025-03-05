@@ -1,4 +1,4 @@
-const { easter, goodFriday } = require('../src/easter');
+const { easter, goodFriday, ashesDay } = require('../src/easter');
 
 describe('easter date calculator', () => {
     test('calculates Good Friday', () => {
@@ -111,5 +111,19 @@ describe('easter date calculator', () => {
         expect(result.getFullYear()).toBe(2028);
         expect(result.getMonth()).toBe(3);
         expect(result.getDate()).toBe(16);
+    });
+
+    test('calculates Ashes Day correctly for 2024', () => {
+        const result = ashesDay(2024);
+        expect(result.getFullYear()).toBe(2024);
+        expect(result.getMonth()).toBe(1);
+        expect(result.getDate()).toBe(14);
+    });
+
+    test('calculates Ashes Day correctly for 2025', () => {
+        const result = ashesDay(2025);
+        expect(result.getFullYear()).toBe(2025);
+        expect(result.getMonth()).toBe(2);
+        expect(result.getDate()).toBe(5);
     });
 });

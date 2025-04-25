@@ -1,19 +1,53 @@
 import { useState, useEffect } from 'react'
+import Calendar from './Calendar'
+import view from './view.cjs'
 import './App.css'
-import { isAbstinence } from './abstinence.cjs'
 
 function App() {
-  const [result, setResult] = useState('');
+  const [abstinence, setAbstinence] = useState('');
+  const [reason, setReason] = useState('');
+  const [isDebug, setIsDebug] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [showCalendar, setShowCalendar] = useState(false);
 
   useEffect(() => {
-    const abstinenceStatus = isAbstinence(new Date()) ? 'Sim' : 'Não';
-    setResult(abstinenceStatus);
+    updateWithDate(new Date());
   }, []);
+
+  const handleDateSelect = (date) => {
+    updateWithDate(date);
+  }
+
+  function updateWithDate(date) {
+    const viewState = view.loadPageWithDate(date);
+    setAbstinence(viewState.abstinence);
+    setReason(viewState.reason);
+    setSelectedDate(viewState.selectedDate);
+    setIsDebug(viewState.isDebugMode);
+  }
+
+  const toggleCalendar = () => {
+    setShowCalendar(!showCalendar);
+  }
 
   return (
     <>
-    <h1>Hoje é dia de abstinência?</h1>
-    <p>{result}</p>
+      <p>{selectedDate}, é dia de abstinência?</p>
+      <h1>{abstinence}</h1>
+      <h3>{reason}</h3>
+
+      {/* Debug features */}
+      {isDebug && (
+        <button 
+          className="calendar-toggle-button" 
+          onClick={toggleCalendar}
+          aria-label="Toggle calendar"
+        >
+          📅
+        </button>
+      )}
+      
+      {isDebug && showCalendar && <Calendar onDateSelect={handleDateSelect} />}
     </>
   )
 }

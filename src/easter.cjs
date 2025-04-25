@@ -1,3 +1,5 @@
+const Day = require("./day.cjs");
+
 function easter(year) {
     const y = year
     const g = y % 19
@@ -14,24 +16,32 @@ function easter(year) {
     const d = 1 + (p + 27 + Math.floor((p + 6) / 40)) % 31;
     const m = 3 + Math.floor((p + 26) / 30);
     
-    return new Date(y, m - 1, d);
+    return new Day(new Date(y, m - 1, d), false, 'Páscoa');
 }
 
 function goodFriday(year) {
-    const easterDate = easter(year);
-    return new Date(
-        easterDate.getFullYear(), 
-        easterDate.getMonth(), 
-        easterDate.getDate() - 2
+    const easterDate = easter(year).date;
+    return new Day(
+        new Date(
+            easterDate.getFullYear(), 
+            easterDate.getMonth(), 
+            easterDate.getDate() - 2
+        ),
+        true,
+        'Sexta-feira Santa'
     );
 }
 
 function ashesDay(year) {
-    const easterDate = easter(year);
-    return new Date(
-        easterDate.getFullYear(), 
-        easterDate.getMonth(), 
-        easterDate.getDate() - 46
+    const easterDate = easter(year).date;
+    return new Day(
+        new Date(
+            easterDate.getFullYear(), 
+            easterDate.getMonth(), 
+            easterDate.getDate() - 46
+        ),
+        true,
+        'Quarta-feira de Cinzas'
     );
 }
 

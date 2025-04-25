@@ -40,3 +40,40 @@
 .read-the-docs {
   color: #888;
 }
+
+.calendar-toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 900;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.calendar-toggle-button:hover {
+  transform: scale(1.1);
+}
+
+.calendar-toggle-button:active {
+  transform: scale(0.95);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .calendar-toggle-button {
+    background-color: #333;
+    border-color: #555;
+    color: white;
+  }
+}
